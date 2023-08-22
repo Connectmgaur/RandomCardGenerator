@@ -35,9 +35,33 @@ function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+let intervalId;
+
+function startTimer() {
+  shuffleCard();
+
+  intervalId = setInterval(shuffleCard, 5000); //start the timer every 5 seconds
+}
+
+function stopTimer() {
+  clearInterval(intervalId); // Stop the interval
+}
+window.onload = shuffleCard();
+
+let ok = document.querySelector(".shuffleButton");
+ok.addEventListener("click", startTimer);
+
+let stop = document.querySelector(".stopButton");
+stop.addEventListener("click", stopTimer);
+
+//Additional
+//const shuffleButton = document.getElementById("shuffleButton");
+//shuffleButton.addEventListener("click", startTimer);
+
+//const stopButton = document.getElementById("stopButton");
+//stopButton.addEventListener("click", stopTimer);
+
 //shuffleCard(); // Shuffle the card on initial page load
 //const shuffleButton = document.getElementById("shuffleButton");
 
-window.onload = shuffleCard();
-let ok = document.querySelector(".shuffleButton");
-ok.addEventListener("click", shuffleCard);
+//window.onload = shuffleCard();
